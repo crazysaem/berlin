@@ -204,7 +204,7 @@ img { max-width: 100%; }
 <body>
 <header class="sign" id="sign">
   <h1>Berlin</h1>
-  <p>Friday afternoon to Saturday night for two, with a show at the Volksbühne and running sushi.</p>
+  <p>Friday afternoon to Saturday night for two, with running sushi and a show at the Volksbühne.</p>
 </header>
 
 <main class="wrap">
@@ -219,18 +219,18 @@ img { max-width: 100%; }
       <section>
         <h2>Book before you go</h2>
         <ul>
+          <li>I-KE-SU for Friday, 19:30. The sushi counter only seats about 20.</li>
+          <li>Let the hotel know you'll check in late on Friday, around 21:30.</li>
+          <li>Timed tickets for the Neues Museum, Saturday around 13:45.</li>
+          <li>TV tower tickets for Saturday around 15:45, to skip the queue.</li>
           <li>Reichstag dome: online slots are booked out. Keep checking for cancellations, and bring ID in case you get a same-day spot.</li>
-          <li>Nothing for Friday dinner: Schlögl's takes no reservations, so just arrive around 16:30.</li>
-          <li>Timed tickets for the Neues Museum, Saturday late morning.</li>
-          <li>TV tower tickets for Saturday around 14:30, to skip the queue.</li>
-          <li>Let the hotel know you'll check in late on Friday, after the show.</li>
-          <li>I-KE-SU for Saturday, 19:30. The sushi counter only seats about 20.</li>
+          <li>Nothing for Saturday dinner: Schlögl's takes no reservations, so just arrive around 16:45.</li>
         </ul>
       </section>
       <section>
         <h2>Getting around</h2>
         <p>A 48-hour AB ticket each covers every ride here. On Friday you walk until Checkpoint Charlie, so start it there, around 16:00. It then lasts until about 16:00 on Sunday, which covers your trip back to the Hauptbahnhof. Buy it in the BVG app or from station machines, and validate paper tickets before your first ride.</p>
-        <p>Your hotel at Alt-Moabit 89 is right by U Turmstraße on the U9, which runs straight to Ku'damm for Saturday's sushi and back.</p>
+        <p>Your hotel at Alt-Moabit 89 is right by U Turmstraße on the U9, which runs straight to Ku'damm for Friday's sushi and back.</p>
               </section>
       <section>
         <h2>Sunday</h2>
@@ -317,11 +317,11 @@ const LEG = {
 
 const DAYS = [
   {
-    name: "Friday", title: "Station to stage", color: "--u2",
-    lead: "Döner at the station, a walk through the government quarter to Checkpoint Charlie, an old-Berlin dinner and the show, then check in.",
+    name: "Friday", title: "Wall, Kreuzberg and running sushi", color: "--u2",
+    lead: "Döner at the station, the government quarter on foot, the East Side Gallery at golden hour, then running sushi near Ku'damm.",
     stops: [
       { t: "13:00", n: "Berlin Hauptbahnhof", ll: [52.5251, 13.3694],
-        d: "Arrive. Travel light for the afternoon: the Reichstag's security won't let large luggage in, so use the station lockers if your bags are big.",
+        d: "Arrive. You'll carry your bags until the evening, and the Reichstag's security won't let large luggage in, so use the station lockers if your bags are big.",
         leg: LEG.walk("2 min, one floor down") },
       { t: "13:10", n: "Döner or currywurst at the station", ll: [52.5245305, 13.368073],
         d: "Two options: Fatih Servet, the best-rated döner, is inside one floor down by platform 7. Grillstand Hbf, outside the south exit on Agnes-von-Zahn-Harnack-Straße, does döner and currywurst and is right where your walk starts.",
@@ -334,53 +334,59 @@ const DAYS = [
         leg: LEG.walk("5 min") },
       { t: "15:10", n: "Memorial to the Murdered Jews of Europe", ll: [52.5139, 13.3787],
         d: "Walk into the field of 2,711 concrete slabs. The information centre underneath is free.",
-        leg: LEG.walk("15 min down Ebertstraße and Niederkirchnerstraße") },
+        leg: LEG.walk("15 min down Ebertstraße and Niederkirchnerstraße, past a surviving stretch of the Wall") },
       { t: "15:50", n: "Checkpoint Charlie", ll: [52.5075, 13.3904],
         d: "The famous Cold War crossing between the American and Soviet sectors. It's touristy, so a quick look is enough. Skip paying for photos with the costumed soldiers.",
-        leg: LEG.u("U6", "var(--u6)", "Kochstraße to Stadtmitte") + LEG.u("U2", "var(--u2)", "to Alexanderplatz, then walk 8 min, about 25 min in all") },
-      { t: "16:30", n: "Dinner at Schlögl's", ll: [52.5214284, 13.4059228],
-        d: "Altberliner Gaststätte at Karl-Liebknecht-Straße 9. A cosy 1930s-style tavern serving goulash soup, Berliner Eisbein, and schnitzel with Bratkartoffeln. If it's full, Zur Gerichtslaube (Poststraße 28) is a 5-minute walk south and open all afternoon.",
-        book: "No reservations, get there early", leg: LEG.walk("15 min along Karl-Liebknecht-Straße") },
-      { t: "17:50", n: "Volksbühne", ll: [52.5269, 13.4115],
-        d: "Show at 18:00. Afterwards, Torstraße and Rosenthaler Platz are close for a drink.",
-        leg: LEG.u("U2", "var(--u2)", "to Zoologischer Garten") + LEG.u("U9", "var(--u9)", "to Turmstraße, about 30 min") },
-      { t: "Late", n: "Check in at the hotel", ll: [52.5251064, 13.3437694], hotel: true,
-        d: "Hotel Tiergarten Berlin, Alt-Moabit 89, a short walk from U Turmstraße. Super Kebab at number 86 is open 24 hours if you're hungry again."}
+        leg: LEG.u("U6", "var(--u6)", "Kochstraße to Friedrichstraße") + LEG.s("to Ostbahnhof, about 25 min in all") },
+      { t: "16:30", n: "East Side Gallery", ll: [52.5050, 13.4397],
+        d: "The longest surviving stretch of the Wall, painted along the Spree. It starts by Ostbahnhof, so you walk its full length toward the Oberbaum Bridge.",
+        leg: LEG.walk("20 min along the murals") },
+      { t: "17:15", n: "Oberbaum Bridge and Kreuzberg", ll: [52.5017, 13.4456],
+        d: "Cross the red-brick bridge into Kreuzberg around sunset (about 18:15 in mid-October) and drift toward Schlesisches Tor for a beer.",
+        leg: LEG.u("U1", "var(--u1)", "Schlesisches Tor to Kurfürstendamm, about 20 min") },
+      { t: "19:10", n: "Kaiser Wilhelm Memorial Church", ll: [52.5048, 13.3350],
+        d: "The bombed-out tower kept as a war memorial at the top of Ku'damm, lit up at night. A quick look on the way to dinner.",
+        leg: LEG.walk("10 min along Ku'damm") },
+      { t: "19:30", n: "Running sushi at I-KE-SU", ll: [52.4985682, 13.3248697],
+        d: "Uhlandstraße 157. Plates float past on little boats around an aquarium counter.",
+        book: "Reserve, counter seats about 20",
+        leg: LEG.u("U9", "var(--u9)", "Spichernstraße to Turmstraße, about 15 min") },
+      { t: "21:30", n: "Check in at the hotel", ll: [52.5251064, 13.3437694], hotel: true,
+        d: "Hotel Tiergarten Berlin, Alt-Moabit 89, a short walk from U Turmstraße. Super Kebab at number 86 is open 24 hours if you're hungry again." }
     ]
   },
   {
-    name: "Saturday", title: "Wall, museums and running sushi", color: "--u1",
-    lead: "East to west across the city without doubling back: Wall, museum, the view from the TV tower, Kreuzberg, then dinner near Ku'damm.",
+    name: "Saturday", title: "Museums, the view and the show", color: "--u1",
+    lead: "The Wall Memorial, Prenzlauer Berg and a proper Berlin döner, a museum, currywurst and the TV tower, then an old-Berlin dinner before the Volksbühne.",
     stops: [
       { t: "09:30", n: "Hotel Tiergarten Berlin", ll: [52.5251064, 13.3437694], hotel: true,
         d: "Breakfast, then head out.",
         leg: LEG.bus("To Hauptbahnhof,") + LEG.tram("M10", "to Nordbahnhof, about 25 min") },
       { t: "10:00", n: "Berlin Wall Memorial", ll: [52.5351, 13.3903],
         d: "Bernauer Straße. Climb the viewing tower to see a preserved stretch of the death strip.",
-        leg: LEG.s("Nordbahnhof to Friedrichstraße, then walk 10 min") },
-      { t: "11:30", n: "Neues Museum, Museum Island", ll: [52.5206, 13.3977],
+        leg: LEG.walk("25 min east along Bernauer Straße, following the old line of the Wall") },
+      { t: "11:30", n: "Prenzlauer Berg and Kollwitzplatz", ll: [52.5364, 13.4176],
+        d: "Leafy streets, cafés and old tenement buildings. The Saturday market on Kollwitzplatz is in full swing in the morning, good for a coffee and a browse.",
+        leg: LEG.walk("10 min") },
+      { t: "12:30", n: "Döner at Rüyam Gemüse Kebab", ll: [52.5405338, 13.4125814],
+        d: "Schönhauser Allee 44A, one of Berlin's most celebrated kebab shops. The house speciality is the Gemüse Kebap: a chicken döner with grilled vegetables, feta and lemon (not vegetarian, despite the name). Regular döner, dürüm and Dönerteller are on the menu too. Expect a queue and bring cash. K'Ups on Kastanienallee is a good backup nearby.",
+        leg: LEG.tram("M1", "Eberswalder Straße to Am Kupfergraben, about 20 min") },
+      { t: "13:45", n: "Neues Museum, Museum Island", ll: [52.5206, 13.3977],
         d: "Pick one museum and do it properly. The Neues Museum has the bust of Nefertiti.",
         book: "Timed ticket online", leg: LEG.walk("8 min over the Spree to Hackescher Markt") },
-      { t: "13:30", n: "Currywurst at Curry 61", ll: [52.523725, 13.4007139],
-        d: "Oranienburger Straße 6 at Hackescher Markt. Locally sourced sausages and their own curry sauce; the queue moves fast but there's no seating. Want to sit down instead? Viet Village at Rosenthaler Straße 50 does great pho.",
+      { t: "15:15", n: "Snack at Curry 61", ll: [52.523725, 13.4007139],
+        d: "Oranienburger Straße 6 at Hackescher Markt. Share one currywurst, dinner is soon. The queue moves fast; there's also a branch by the TV tower at Alexanderplatz.",
         leg: LEG.walk("12 min") },
-      { t: "14:30", n: "TV tower (Fernsehturm)", ll: [52.5208, 13.4094],
-        d: "Up to the viewing deck at 203 metres for the best view over the whole city, including everywhere you've been since Friday.",
-        book: "Timed ticket online", leg: LEG.s("Alexanderplatz to Ostbahnhof, about 5 min") },
-      { t: "15:30", n: "East Side Gallery", ll: [52.5050, 13.4397],
-        d: "The longest surviving stretch of the Wall, painted along the Spree. It starts by Ostbahnhof, so you walk its full length toward the Oberbaum Bridge.",
-        leg: LEG.walk("20 min along the murals") },
-      { t: "16:30", n: "Oberbaum Bridge and Kreuzberg", ll: [52.5017, 13.4456],
-        d: "Cross the red-brick bridge into Kreuzberg and drift toward Schlesisches Tor for coffee or a beer. Sunset is around 18:15 in mid-October, so the bridge is lovely in the late light.",
-        leg: LEG.u("U1", "var(--u1)", "Schlesisches Tor to Kurfürstendamm, about 20 min") },
-      { t: "18:30", n: "Kaiser Wilhelm Memorial Church", ll: [52.5048, 13.3350],
-        d: "The bombed-out tower kept as a war memorial at the top of Ku'damm. Stroll the boulevard toward dinner.",
-        leg: LEG.walk("10 min along Ku'damm") },
-      { t: "19:30", n: "Running sushi at I-KE-SU", ll: [52.4985682, 13.3248697],
-        d: "Uhlandstraße 157. Plates float past on little boats around an aquarium counter.",
-        book: "Reserve, counter seats about 20",
-        leg: LEG.u("U9", "var(--u9)", "Spichernstraße to Turmstraße, about 15 min") },
-      { t: "21:30", n: "Back to the hotel", ll: [52.5251064, 13.3437694], hotel: true,
+      { t: "15:45", n: "TV tower (Fernsehturm)", ll: [52.5208, 13.4094],
+        d: "Up to the viewing deck at 203 metres for the best view over the whole city, including everywhere you went on Friday.",
+        book: "Timed ticket online", leg: LEG.walk("8 min") },
+      { t: "16:45", n: "Dinner at Schlögl's", ll: [52.5214284, 13.4059228],
+        d: "Altberliner Gaststätte at Karl-Liebknecht-Straße 9. A cosy 1930s-style tavern serving goulash soup, Berliner Eisbein, and schnitzel with Bratkartoffeln. If it's full, Zur Gerichtslaube (Poststraße 28) is a 5-minute walk south.",
+        book: "No reservations, get there early", leg: LEG.walk("15 min along Karl-Liebknecht-Straße") },
+      { t: "17:50", n: "Volksbühne", ll: [52.5269, 13.4115],
+        d: "Show at 18:00. Afterwards, Torstraße and Rosenthaler Platz are close for a drink.",
+        leg: LEG.u("U2", "var(--u2)", "to Zoologischer Garten") + LEG.u("U9", "var(--u9)", "to Turmstraße, about 30 min") },
+      { t: "Late", n: "Back to the hotel", ll: [52.5251064, 13.3437694], hotel: true,
         d: "Rest up before heading home on Sunday." }
     ]
   }
